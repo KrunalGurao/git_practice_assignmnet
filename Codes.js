@@ -1,22 +1,23 @@
-Prime No. :-
-
- let count =;
- let cot=;
+//Prime No. :-
+let a = 17;
+let b = 15;
+ let count_a =0;
+ let count_b=0;
  for (let i=0 ; i<=a; i++)
  {
      if (a%i==0)
      {
-         count++;
+         count_a++;
      }
  }
  for (let j=0; j<=b;j++)
  {
       if (b%j==0)
      {
-         cot++;
+         count_b++;
      }
  }
- if (count==2 && cot==2)
+ if (count_a ==2 && count_b ==2)
  {
      console.log("True");
  }
@@ -24,21 +25,3 @@ Prime No. :-
  {
  console.log("False");
  }
-
-************************************************************************************************************
-
-Palindrome :-
-
-let bag="";
-    for (let i=N-1 ; i>=0;i)
-    {
-        bag = bag+ str[i];
-    }
-    if (bag==str)
-    {
-        console.log("Yes")
-    }
-    else
-    {
-        console.log("No")
-    }
