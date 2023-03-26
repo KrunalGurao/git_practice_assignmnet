@@ -16,7 +16,7 @@ userRouter.post("/register", async(req,res)=>{
         bcrypt.hash(pass, 5,async(err,hash)=>{
             const user=new UserModel({email,pass:hash,location,age})
             await user.save()
-            res.status(200).send({"msg":"login successfull"})
+            res.status(200).send({"msg":"REGISTRATION SUCCESSFULL"})
         });            
     } catch (err) {
         res.status(400).send({"msg":"ERROR"})
@@ -37,7 +37,7 @@ userRouter.post("/login", async(req,res)=>{
             bcrypt.compare(pass, user.pass,(err,result)=>{
                 if(result)
                 {
-                    res.status(200).send({"msg":"login successfull","token":jwt.sign({"userID":user._id},"masai")})
+                    res.status(200).send({"msg":"LOGIN SUCCESSFULL","token":jwt.sign({"userID":user._id},"masai")})
                 }
                 else
                 {
@@ -55,27 +55,6 @@ userRouter.post("/login", async(req,res)=>{
 
 //************************************************************************************************/
 
-
-//token
-userRouter.get("/details",(req,res)=>{
-const token=req.headers.authorization
-jwt.verify(token, 'masai', (err, decoded)=>{
-    decoded ? res.status(200).send({"msg":"User Details"}) : res.status(400).send({"msg":"Login required cannot access the restricted route"})
-   });
-})
-
-
-//**************************************************************************************************/
-
-
-//verify
-userRouter.get("/moviedata",(req,res)=>{
-    const {token}=req.query
-    jwt.verify(token, 'bruce', (err, decoded)=>{
-       decoded ? res.status(200).send({"msg":"User Details"}) : res.status(400).send({"msg":"Login required cannot access the restricted route"})
-      });
-    })
-    
 
 
 
